@@ -11,3 +11,9 @@ modules:
             #url: http://localhost/myapp
             url: http://gigadb.gigasciencejournal.com:9170/
         - \Helper\Acceptance
+        - Yii2:
+              configFile: 'protected/config/test.php'
+              part: orm # allow to use AR methods
+              transaction: false # don't wrap test in transaction
+              cleanup: false # don't cleanup the fixtures
+              entryScript: index-test.php

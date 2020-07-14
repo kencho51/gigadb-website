@@ -8,3 +8,7 @@ actor_suffix: Tester
 extensions:
     enabled:
         - Codeception\Extension\RunFailed
+modules:
+    config:
+        Yii2:
+            configFile: 'protected/config/test.php'

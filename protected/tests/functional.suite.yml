@@ -10,3 +10,5 @@ modules:
     enabled:
         # add a framework module here
         - \Helper\Functional
+        - Yii2:
+            configFile: 'protected/config/test.php'
