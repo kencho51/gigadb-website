@@ -101,7 +101,9 @@ $this->pageTitle='GigaDB - Help';
                             <p>If you have any questions, please contact us at <a href="mailto:database@gigasciencejournal.com" target="_blank">database@gigasciencejournal.com</a>.</p>
                         </div>
                         <div role="tabpanel" class="tab-pane" id="vocabulary">
-                            <h4 id="datasettypes" style="color: #099242; margin-bottom: 10px;">Dataset types</h4>
+                            <h4 id="datasettypes" style="color: #099242; margin-bottom: 10px;">
+                                <a href="/site/datasettypes">Dataset types</a>
+                            </h4>
                             <p><strong>Genomic</strong> - includes all genetic and genomic data eg sequence, assemblies, alignments, genotypes, variation and annotation. Minimal requirements: DNA sequence data eg next-gen raw reads (fastq files) OR assembled DNA sequences (fasta files)</p>
                             <p><strong>Epigenomic</strong> - includes methylation and histone modification data. Minimal requirements: Details on methylation sites/status eg qmap files OR details on histone modification sites/status.</p>
                             <p><strong>Metagenomic</strong> - includes all genetic and genomic data eg sequence, assemblies, alignments, genotypes, variation and annotation from environmental samples. Minimal requirements: Environmental DNA sequence data eg next-gen raw reads (fastq files) OR assembled DNA sequences (fasta files).</p>
