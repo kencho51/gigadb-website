@@ -110,7 +110,9 @@ $this->pageTitle='GigaDB - Help';
                             <p><strong>Proteomic</strong> - includes all mass spec data. Minimal requirements: Peptide/protein data eg mass spec.</p>
                             <p><strong>Transcriptomic</strong> - includes all data relating to mRNA. Minimal requirements: RNA sequence data eg next-gen raw reads (fastq files) OR transcript statistics eg RNA coverage/depth.</p>
                             <p>Additional dataset types can be added, upon review, as new submissions are received.</p>
-                            <h4 id="filetypes" style="color: #099242; margin-bottom: 10px;">File types</h4>
+                            <h4 id="filetypes" style="color: #099242; margin-bottom: 10px;">
+                                <a href="/site/filetypes">File types</a>
+                            </h4>
                             <p>File types and examples of associated file extensions:</p>
                             <p><strong>Alignments:</strong> .bam, .chain, .maf, .net, .sam</p>
                             <p><strong>Allele frequencies:</strong> .frq</p>
