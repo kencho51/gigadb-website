@@ -29,7 +29,7 @@ class SiteController extends Controller {
 	public function accessRules() {
         return array(
             array('allow',  // allow all users
-                'actions'=>array('index','error','contact','mapbrowse','team','about','advisory','faq','term','help','privacy', 'login', 'loginAffiliate', 'logout', 'revoke', 'feed', 'Guide', 'Guidegenomic', 'Guideimaging', 'Guidemetabolomic', 'Guideepigenomic', 'Guidemetagenomic', 'Guidesoftware', 'DatasetTypes'),
+                'actions'=>array('index','error','contact','mapbrowse','team','about','advisory','faq','term','help','privacy', 'login', 'loginAffiliate', 'logout', 'revoke', 'feed', 'Guide', 'Guidegenomic', 'Guideimaging', 'Guidemetabolomic', 'Guideepigenomic', 'Guidemetagenomic', 'Guidesoftware', 'DatasetTypes', 'FileTypes'),
                 'users'=>array('*'),
             ),
             array('allow', # admins
@@ -275,6 +275,11 @@ class SiteController extends Controller {
     public function actionDatasetTypes(){
         $this->layout='new_main';
         $this->render('datasettypes');
+    }
+
+    public function actionFileTypes() {
+        $this->layout='new_main';
+        $this->render('filetypes');
     }
 
 	/**
