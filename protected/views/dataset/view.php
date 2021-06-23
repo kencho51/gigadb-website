@@ -48,7 +48,7 @@ $this->pageTitle="GigaDB Dataset - DOI 10.5524/".$model->identifier." - ".$title
                                                 <script>
                                                     function showText() {
                                                         var textWindow = window.open();
-                                                        textWindow.document.write(`<?php echo $clean_text; ?>`);
+                                                        textWindow.document.write(`<?php echo $clean_text; ?>//`);
                                                     }
                                                 </script>
                                                 <ul class="dropdown-menu" aria-labelledby="CiteDataset">
@@ -57,6 +57,41 @@ $this->pageTitle="GigaDB Dataset - DOI 10.5524/".$model->identifier." - ".$title
                                                     <li><a id="citeBibTeX" href='https://data.datacite.org/application/x-bibtex/10.5524/<?php echo $model->identifier;?>' target="_self">BibTeX</a></li>
                                                 </ul>
                                             </div>
+                                            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Cite Pop up</button>
+                                            <div id="myModal" class="modal fade" role="dialog">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                            <h4 class="modal-title">Cite</h4>
+                                                        </div>
+                                                        <div id="citeText" class="modal-body-text-block">
+                                                                <?php echo $clean_text ?>;
+                                                        </div>
+                                                        <div class="modal-action">
+                                                            <button id="copy-btn" onclick="copyCiteText('citeText')">Copy</button>
+                                                            <li><a id="citeRis" href='https://data.datacite.org/application/x-research-info-systems/10.5524/<?php echo $model->identifier;?>' target="_self">RIS</a></li>
+                                                            <li><a id="citeBibTeX" href='https://data.datacite.org/application/x-bibtex/10.5524/<?php echo $model->identifier;?>' target="_self">BibTeX</a></li>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <script>
+                                                function copyCiteText("citeText"){
+                                                    if (document.selection) {
+                                                        var range = document.body.createTextRange();
+                                                        range.moveToElementText(document.getElementById("citeText"));
+                                                        range.select().createTextRange();
+                                                        document.execCommand("copy");
+                                                    } else if (window.getSelection) {
+                                                        var range = document.createRange();
+                                                        range.selectNode(document.getElementById("citeText"));
+                                                        window.getSelection().addRange(range);
+                                                        document.execCommand("copy");
+                                                        alert("Text has been copied")
+                                                    }
+                                                }
+                                            </script>
                                         </div>
                                     <?php } ?>
                                 </div>
