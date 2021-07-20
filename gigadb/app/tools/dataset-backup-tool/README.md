@@ -1,6 +1,4 @@
-# Tools for GigaDB: dataset-backup-tool
-
-## Set up
+# Tools for GigaDB: dataset-backup-tool - RClone
 
 To run the Tencent backup smoke tests, the tests need access to a Tencent Cloud
 account which is provided by these variables: `TENCENTCLOUD_SECRET_ID`,
