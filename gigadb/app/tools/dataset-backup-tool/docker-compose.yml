@@ -18,4 +18,5 @@ services:
       dockerfile: ./Dockerfile
     volumes:
       - .:/app
+      - ./tests/_data/permissions:/data/gigadb/pub/10.5524/
     command: ../../../../ops/scripts/webapp_setup.sh
