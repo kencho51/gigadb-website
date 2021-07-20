@@ -23,6 +23,7 @@ class.
 Change directory to the `dataset-backup-tool`:
 ```
 $ cd gigadb/app/tools/dataset-backup-tool
+$ compose install
 ```
 
 There are 3 smoke tests in `tests/functional/BackupSmokeCest` which backup data
@@ -42,7 +43,7 @@ files to a `dataset` directory in a Tencent bucket:
 
 To run these smoke tests:
 ```
-$ docker-compose run --rm backup_tool ./vendor/bin/codecept run tests/functional/BackupSmokeCest.php
+$ docker-compose run --rm backup_tool ./vendor/bin/codecept run tests/functional/RCloneSmokeCest.php
 ```
 
 
