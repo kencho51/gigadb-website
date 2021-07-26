@@ -160,14 +160,24 @@ To run these smoke tests:
 $ docker-compose run --rm backup_tool ./vendor/bin/codecept run tests/functional/FixPermissionCest.php
 ```
 
-###  Set up the `cronjob`:
+###  Set up the `cron job`:
 The permission issues could occur regularly, so a regular fixing would be needed.  
 To enable the `cronjob` which would start fixing permission at midnight of every day:
 ```
 $ cd gigadb/app/tools/dataset-backup-tool
+$ chmod a+x scripts/fix_permissions.sh
 $ crontab < cronjob_fix_permission.txt
 $ crontab -l 
 0 0 * * * /app/scripts/fix-permissions.sh >> /tmp/permission_cron.log 2>&1
+```
+
+### Set up the production `cron job`:  
+In the backup server, the permission issues could occur regularly, so a regular fixing would be needed.
+After that, `rclone` will be used to sync all `/data/gigadb/pub/10.5524/` to `Tencent COS` bucket.
+```
+$ cd gigadb/app/tools/dataset-backup-tool
+$ chmod a+x scripts/fix_permissions_prod.sh scripts/sync_files_prod.sh 
+$ crontab < cronjob_fix_and_sync.txt
 ```
 
 
