@@ -1,0 +1,2 @@
+0 0 * * * scripts/fix_permissions_prod.sh >> /tmp/fix_permission_cron.log 2>&1
+0 0 * * FRI scripts/fix_permissions_prod.sh >> /tmp/fix_permission_cron.log && scripts/sync_files_prod.sh >> /tmp/sync_to_cos.log
