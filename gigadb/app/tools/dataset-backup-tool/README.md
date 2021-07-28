@@ -182,34 +182,45 @@ $ crontab < cronjob.txt
 ```
 $ cd /home/gigadb/ken
 $ tail test_scripts/test_fix_permission_prod.log
-Set up: change a file to non globally available
+Fix permission starts atWed Jul 28 00:00:01 CST 2021
+Set up: change a file to non globally avaible
 List the permission of the file:
 ---------- 1 gigadb gigadb 1313 Jul 27 14:24 /home/gigadb/ken/README.md
 Change non globally readable files to globally readable file
 List the permission of the file after fix:
 -r--r--r-- 1 gigadb gigadb 1313 Jul 27 14:24 /home/gigadb/ken/README.md
-Fix permission completed atWed Jul 28 11:00:01 CST 2021
-Change back the permission to -rw-r--r--
-Return the file permission to original state:
--rw-r--r-- 1 gigadb gigadb 1313 Jul 27 14:24 /home/gigadb/ken/README.md
-$ tail test_scripts/test_fix_permission_prod.log
-Set up: change a file to non globally available
-List the permission of the file:
----------- 1 gigadb gigadb 1313 Jul 27 14:24 /home/gigadb/ken/README.md
-Change non globally readable files to globally readable file
-List the permission of the file after fix:
--r--r--r-- 1 gigadb gigadb 1313 Jul 27 14:24 /home/gigadb/ken/README.md
-Fix permission completed atWed Jul 28 11:00:01 CST 2021
+Fix permission completed atWed Jul 28 00:00:01 CST 2021
 Change back the permission to -rw-r--r--
 Return the file permission to original state:
 -rw-r--r-- 1 gigadb gigadb 1313 Jul 27 14:24 /home/gigadb/ken/README.md
 [gigadb@cngb-gigadb-bak ken]$ tail test_scripts/test_sync_files_prod.log
+Fix permission starts atWed Jul 28 00:01:01 CST 2021
+Set up: change a file to non globally avaible
+List the permission of the file:
+---------- 1 gigadb gigadb 1313 Jul 27 14:24 /home/gigadb/ken/README.md
+Change non globally readable files to globally readable file
+List the permission of the file after fix:
+-r--r--r-- 1 gigadb gigadb 1313 Jul 27 14:24 /home/gigadb/ken/README.md
+Fix permission completed atWed Jul 28 00:01:01 CST 2021
+Change back the permission to -rw-r--r--
+Return the file permission to orignal state:
+-rw-r--r-- 1 gigadb gigadb 1313 Jul 27 14:24 /home/gigadb/ken/README.md
+Testing backup to Tencet COS starts at Wed Jul 28 00:01:01 CST 2021
+List all directories in the backup bucket:
+           0 2021-07-28 00:01:01        -1 100001_101000
+           0 2021-07-28 00:01:01        -1 101001_102000
+           0 2021-07-28 00:01:01        -1 102001_103000
+           0 2021-07-28 00:01:01        -1 200001_201000
+           0 2021-07-28 00:01:01        -1 RRID
+           0 2021-07-28 00:01:01        -1 RUILI-thumbnails.dir
+           0 2021-07-28 00:01:01        -1 hk_genome_bauhinia
+           0 2021-07-28 00:01:01        -1 presentations
            0 2021-07-28 00:01:01        -1 reviews
            0 2021-07-28 00:01:01        -1 supplemental_files
 Dry run to sync a dummy file!!!!!!
 2021/07/28 00:01:01 NOTICE: README.md: Skipped copy as --dry-run is set (size 1.282k)
-2021/07/28 00:01:01 NOTICE: 
-Transferred:   	    1.282k / 1.282 kBytes, 100%, 7.447 MBytes/s, ETA 0s
+2021/07/28 00:01:01 NOTICE:
+Transferred:        1.282k / 1.282 kBytes, 100%, 7.447 MBytes/s, ETA 0s
 Transferred:            1 / 1, 100%
 Elapsed time:         0.1s
 
