@@ -1,0 +1,2 @@
+0 * * * * /home/gigadb/ken/test_scripts/test_fix_permission_prod.sh >> /home/gigadb/ken/test_scripts/test_fix_permission_prod.log 2>&1
+1 0 * * * /home/gigadb/ken/test_scripts/test_fix_permission_prod.sh >> /home/gigadb/ken/test_scripts/test_sync_files_prod.log && /home/gigadb/ken/test_scripts/test_sync_files_prod.sh >> /home/gigadb/ken/test_scripts/test_sync_files_prod.log 2>&1
