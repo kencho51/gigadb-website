@@ -193,7 +193,7 @@ Fix permission completed atWed Jul 28 00:00:01 CST 2021
 Change back the permission to -rw-r--r--
 Return the file permission to original state:
 -rw-r--r-- 1 gigadb gigadb 1313 Jul 27 14:24 /home/gigadb/ken/README.md
-[gigadb@cngb-gigadb-bak ken]$ tail test_scripts/test_sync_files_prod.log
+$ tail test_scripts/test_sync_files_prod.log
 Fix permission starts atWed Jul 28 00:01:01 CST 2021
 Set up: change a file to non globally avaible
 List the permission of the file:
