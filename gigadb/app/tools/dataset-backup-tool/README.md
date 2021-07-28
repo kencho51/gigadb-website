@@ -160,30 +160,66 @@ To run these smoke tests:
 $ docker-compose run --rm backup_tool ./vendor/bin/codecept run tests/functional/FixPermissionCest.php
 ```
 
-###  Set up the `cron job`:
-The permission issues could occur regularly, so a regular fixing would be needed.  
-To enable the `cronjob` which would start fixing permission at midnight of every day:
+### `cron job` testing on `smoc server`:
+The permission issues could occur regularly, and only `globally readable` files could be sync,
+so a regular fixing would be needed. 
+`rclone --dry-run sync source destination` will be used for the testing purpose.
+
+1. Connect to `GlobalProtect` vpn using BGI credentials
+2. Go to `smoc` [website](https://smoc.genomics.cn/) and login.
+3. Connect to the server `10.50.11.48` using `gigadb` account.
+4. Enable the `cronjob` which would start fixing permission at `every hour of every day`, and run `rclone sync` at `0100 of everyday`.
 ```
-$ cd gigadb/app/tools/dataset-backup-tool
-$ chmod a+x scripts/fix_permissions.sh
-$ crontab < cronjob_fix_permission.txt
-$ crontab -l 
-0 0 * * * /app/scripts/fix-permissions.sh >> /tmp/permission_cron.log 2>&1
+$ cd /home/gigadb/ken
+$ chmod a+x test_scripts/test_fix_permission_prod.sh
+$ chmod a+x test_scripts/test_sync_files_prod.sh
+$ crontab < cronjob.txt
 ```
-
-### Set up the production `cron job`:  
-In the backup server, the permission issues could occur regularly, so a regular fixing would be needed.
-After that, `rclone` will be used to sync all `/data/gigadb/pub/10.5524/` to `Tencent COS` bucket.
+5. Examine the `cron job` logs
 ```
-$ cd gigadb/app/tools/dataset-backup-tool
-$ chmod a+x scripts/fix_permissions_prod.sh scripts/sync_files_prod.sh 
-$ crontab < cronjob_fix_and_sync.txt
+$ cd /home/gigadb/ken
+$ tail test_scripts/test_fix_permission_prod.log
+Set up: change a file to non globally available
+List the permission of the file:
+---------- 1 gigadb gigadb 1313 Jul 27 14:24 /home/gigadb/ken/README.md
+Change non globally readable files to globally readable file
+List the permission of the file after fix:
+-r--r--r-- 1 gigadb gigadb 1313 Jul 27 14:24 /home/gigadb/ken/README.md
+Fix permission completed atWed Jul 28 11:00:01 CST 2021
+Change back the permission to -rw-r--r--
+Return the file permission to original state:
+-rw-r--r-- 1 gigadb gigadb 1313 Jul 27 14:24 /home/gigadb/ken/README.md
+$ tail test_scripts/test_fix_permission_prod.log
+Set up: change a file to non globally available
+List the permission of the file:
+---------- 1 gigadb gigadb 1313 Jul 27 14:24 /home/gigadb/ken/README.md
+Change non globally readable files to globally readable file
+List the permission of the file after fix:
+-r--r--r-- 1 gigadb gigadb 1313 Jul 27 14:24 /home/gigadb/ken/README.md
+Fix permission completed atWed Jul 28 11:00:01 CST 2021
+Change back the permission to -rw-r--r--
+Return the file permission to original state:
+-rw-r--r-- 1 gigadb gigadb 1313 Jul 27 14:24 /home/gigadb/ken/README.md
+[gigadb@cngb-gigadb-bak ken]$ tail test_scripts/test_sync_files_prod.log
+           0 2021-07-28 00:01:01        -1 reviews
+           0 2021-07-28 00:01:01        -1 supplemental_files
+Dry run to sync a dummy file!!!!!!
+2021/07/28 00:01:01 NOTICE: README.md: Skipped copy as --dry-run is set (size 1.282k)
+2021/07/28 00:01:01 NOTICE: 
+Transferred:   	    1.282k / 1.282 kBytes, 100%, 7.447 MBytes/s, ETA 0s
+Transferred:            1 / 1, 100%
+Elapsed time:         0.1s
+
+Testing backup completed at Wed Jul 28 00:01:01 CST 2021
 ```
+6. The `cronjob.txt` could be found at `gigadb/app/tools/dataset-backup-tool/cronjob.txt`.  
+7. The `test_fix_permission_prod.sh` and `test_sync_files_prod.sh` could be found at `gigadb/app/tools/dataset-backup-tool/scripts/`.  
+8. The logs could be found at `gigadb/app/tools/dataset-backup-tool/tests/_output/`.
 
-
-
-
-
+### `cron job` testing summary
+1. `cron` scheduling worked as expected, which fixed `permission` at every hour and `sync --dry-run` at 00:00.
+2. `find /dir ! -perm -g+r,u+r,o+r -exec chmod a+r {} \;` tested and worked properly.
+3. `rclone lsd cos:bucket_id` and `rclone --dry-run sync --checksum` tested and worked properly.
 
 
 
