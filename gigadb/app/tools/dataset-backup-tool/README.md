@@ -218,8 +218,9 @@ Testing backup completed at Wed Jul 28 00:01:01 CST 2021
 
 ### `cron job` testing summary
 1. `cron` scheduling worked as expected, which fixed `permission` at every hour and `sync --dry-run` at 00:00.
+   - scheduled `fix permission` && `rclone sync` to make sure backup would start only after the permission is fixed.
 2. `find /dir ! -perm -g+r,u+r,o+r -exec chmod a+r {} \;` tested and worked properly.
-3. `rclone lsd cos:bucket_id` and `rclone --dry-run sync --checksum` tested and worked properly.
+3. `rclone lsd cos:bucket_id` and `rclone --dry-run sync` tested and worked properly.
 
 
 
