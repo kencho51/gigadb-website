@@ -160,11 +160,14 @@ To run these smoke tests:
 $ docker-compose run --rm backup_tool ./vendor/bin/codecept run tests/functional/FixPermissionCest.php
 ```
 
-### `cron job` testing on `smoc server`:
+## Cron job testing on `smoc server`
+
+### Problems
 The permission issues could occur regularly, and only `globally readable` files could be sync,
 so a regular fixing would be needed. 
 `rclone --dry-run sync source destination` will be used for the testing purpose.
 
+### Steps
 1. Connect to `GlobalProtect` vpn using BGI credentials
 2. Go to `smoc` [website](https://smoc.genomics.cn/) and login.
 3. Connect to the server `10.50.11.48` using `gigadb` account.
