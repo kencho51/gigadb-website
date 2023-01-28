@@ -47,7 +47,7 @@ class StoredDatasetFiles extends DatasetComponents implements DatasetFilesInterf
 	 */
 	public function getDatasetFiles(): array
 	{
-	    
+        Yii::log("*** In StoredDatasetFiles::getDatasetFiles !!! ***");
 		$objectToHash =  function ($file) {
 
 			$toNameValueHash = function ($file_attribute) {
@@ -86,6 +86,7 @@ class StoredDatasetFiles extends DatasetComponents implements DatasetFilesInterf
 	 */
 	public function getDatasetFilesSamples(): array
 	{
+        Yii::log("*** In StoredDatasetFiles::getDatasetFilesSamples !!! ***");
 		// 'sample_id' => 1,
 		// 'sample_name' => "Sample 1",
 		// 'file_id' => 1,
