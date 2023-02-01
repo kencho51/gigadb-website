@@ -10,7 +10,8 @@
  */
 class StoredDatasetFiles extends DatasetComponents implements DatasetFilesInterface
 {
-	private $_id;
+    const FILES_ROWS_LIMIT = 8000;
+    private $_id;
 	private $_db;
 
 	public function __construct (int $dataset_id, CDbConnection $dbConnection)
@@ -71,7 +72,7 @@ class StoredDatasetFiles extends DatasetComponents implements DatasetFilesInterf
 		$sql = "select
 		id, dataset_id, name, location, extension, size, description, date_stamp, format_id, type_id, download_count
 		from file
-		where dataset_id=:id" ;
+		where dataset_id=:id limit " . self::FILES_ROWS_LIMIT ; ;
 		$files = File::model()->findAllBySql($sql, array('id'=>$this->_id));
 		$result = array_map($objectToHash, $files);
 		// var_dump($result);
