@@ -7,7 +7,7 @@ class DownloadService extends yii\base\Component
 {
     /**
      * Initializes application component.
-     * 
+     *
      * This method overrides the parent implementation by setting default cache
      * key prefix.
      */
@@ -26,10 +26,11 @@ class DownloadService extends yii\base\Component
     {
         $webClient = new \GuzzleHttp\Client();
         $response = $webClient->request('GET', $url);
-        if ($response->getStatusCode() === 200)
+        if ($response->getStatusCode() === 200) {
             return $response->getBody()->getContents();
-        else
+        } else {
             throw new Exception("Error downloading file by DownloadService: status code " . $response->getStatusCode());
+        }
     }
 
     /**
@@ -45,9 +46,8 @@ class DownloadService extends yii\base\Component
             $webClient->head($url);
             return true;
         } catch (GuzzleHttp\Exception\ClientException $e) {
-            echo "No file found at $url".PHP_EOL;
+            echo "No file found at $url" . PHP_EOL;
             return false;
         }
     }
 }
-?>
