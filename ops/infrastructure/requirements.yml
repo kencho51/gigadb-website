@@ -1,3 +1,4 @@
 # from github
 - src: https://github.com/ansible/role-secure-docker-daemon
 - src: https://github.com/geerlingguy/ansible-role-postgresql
+- src: https://github.com/stefangweichinger/ansible-rclone
