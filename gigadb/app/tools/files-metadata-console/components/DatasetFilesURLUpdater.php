@@ -147,9 +147,11 @@ final class DatasetFilesURLUpdater extends Component
             $newFTPSite = $newFTPSitePrefix . $path;
             if ($this->apply === true) {
                 $dataset->ftp_site = $newFTPSite;
-                if(!$dataset->save()) {
-                    throw new Exception(implode($dataset->getErrors(null)));
-                }
+//                if(!$dataset->save()) {
+//                    throw new Exception(implode($dataset->getErrors(null)));
+//                }
+                echo 'Apply is true - saving dataset ftp_site attribute';
+                $dataset->save();
             }
             $success++;
         } else {
