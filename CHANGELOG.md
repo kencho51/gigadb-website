@@ -2,9 +2,7 @@
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
-## 2023-07-18
-
-### Added
+## Unreleased
 
 - Feat #1294: Added tool into files metadata console to update dataset FTP site 
   and file location URLs.
