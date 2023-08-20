@@ -34,5 +34,5 @@ services:
 
 networks:
   proxy-db-tier:  # represents db-tier network in ops/docker-compose.yml
-    name: deployment_db-tier
+    name: ${GIGADB_COMPOSE_PROJECT_NAME}_db-tier
     external: true
