@@ -19,7 +19,7 @@
     - time docker pull registry.gitlab.com/$CI_PROJECT_PATH/production_tideways-daemon:$GIGADB_ENV || true
     # build tideways container and push it registry
     - time docker-compose build production_tideways-daemon
-    - time docker tag ${CI_PROJECT_NAME}_production_tideways-daemon registry.gitlab.com/$CI_PROJECT_PATH/production_tideways-daemon:$GIGADB_ENV
+    - time docker tag ${CI_PROJECT_NAME}-production_tideways-daemon registry.gitlab.com/$CI_PROJECT_PATH/production_tideways-daemon:$GIGADB_ENV
     - time docker push registry.gitlab.com/$CI_PROJECT_PATH/production_tideways-daemon:$GIGADB_ENV
   environment:
     name: $DEPLOYMENT_ENV
