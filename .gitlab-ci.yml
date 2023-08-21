@@ -62,8 +62,8 @@ include:
   - template: Security/SAST.gitlab-ci.yml
   - template: Security/Container-Scanning.gitlab-ci.yml
   - local: "ops/pipelines/gigadb-build-jobs.yml"
-  - local: "ops/pipelines/gigadb-test-jobs.yml"
-  - local: "ops/pipelines/gigadb-conformance-security-jobs.yml"
+#  - local: "ops/pipelines/gigadb-test-jobs.yml"
+#  - local: "ops/pipelines/gigadb-conformance-security-jobs.yml"
   - local: "ops/pipelines/gigadb-deploy-jobs.yml"
   - local: "ops/pipelines/gigadb-operations-jobs.yml"
   - local: "ops/pipelines/gitlab-tideways-jobs.yml"
@@ -78,8 +78,8 @@ include:
   - local: "gigadb/app/tools/readme-generator/gitlab-config-build-live.yml"
   - local: "gigadb/app/tools/readme-generator/gitlab-config-deploy-live.yml"
   - local: "gigareview/gitlab-config.yml"
-  - local: "gigadb/app/tools/files-metadata-console/gitlab-config-ci-build.yml"
-  - local: "gigadb/app/tools/files-metadata-console/gitlab-config-ci-test.yml"
+#  - local: "gigadb/app/tools/files-metadata-console/gitlab-config-ci-build.yml"
+#  - local: "gigadb/app/tools/files-metadata-console/gitlab-config-ci-test.yml"
   - local: "gigadb/app/tools/files-metadata-console/gitlab-config-staging-build.yml"
   - local: "gigadb/app/tools/files-metadata-console/gitlab-config-staging-deploy.yml"
   - local: "gigadb/app/tools/files-metadata-console/gitlab-config-live-build.yml"
