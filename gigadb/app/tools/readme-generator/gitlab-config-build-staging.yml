@@ -10,11 +10,12 @@ ReadmeGeneratorBuildStaging:
     GROUP_VARIABLES_URL: "https://gitlab.com/api/v4/groups/gigascience/variables?per_page=100"
     FORK_VARIABLES_URL: "https://gitlab.com/api/v4/groups/3501869/variables"
     GIGADB_COMPOSE_PROJECT_NAME: $CI_PROJECT_NAME
-  before_script:
-    - pwd
+  script:
+    - env | grep "^HOME_URL" >> $APPLICATION/.env
+    - env | grep "^GIGADB_" >> $APPLICATION/.secrets
     - env
     - ./up.sh
-  script:
+    - docker network ls
     - env | grep -iE "(GIGADB_ENV|REPO_NAME|PROJECT_VARIABLES_URL|MISC_VARIABLES_URL|GITLAB_PRIVATE_TOKEN|CI_PROJECT_URL|GROUP_VARIABLES_URL|FORK_VARIABLES_URL)"| tee gigadb/app/tools/readme-generator/.env
     - cd gigadb/app/tools/readme-generator
     - $LOCAL_COMPOSE run --rm configure  # run configure to create configuration file with variables from staging
