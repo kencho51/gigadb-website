@@ -258,7 +258,7 @@ build_live:
   stage: live build
   tags:
     - $GITLAB_USER_LOGIN
-  needs: ["base_images","a_gigadb"]
+  needs: ["base_images"]
   when: manual
   environment:
     name: "live"
