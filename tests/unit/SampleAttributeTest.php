@@ -1,5 +1,7 @@
 <?php
 
+use tests\fixtures\SampleAttributeFixture;
+
 /**
  * Class SampleAttribute
  *
@@ -22,6 +24,16 @@ class SampleAttributeTest extends \Codeception\Test\Unit
 
     protected function _after()
     {
+    }
+    public function _fixtures(): array
+    {
+        return [
+            'profiles' => [
+                'class' => SampleAttribute::class,
+                // fixture data located in tests/_data/sampleAttribute.php
+                'dataFile' => codecept_data_dir() . 'sampleAttribute.php'
+            ],
+        ];
     }
 
     // tests
