@@ -8,7 +8,7 @@ cache:
     - ops/infrastructure/envs/staging/.terraform.lock.hcl
 
 before_script:
-  - mkdir -pv ops/infrastructure/envs/staging
+  - 'mkdir -pv ops/infrastructure/envs/staging'
 
 
 init:
