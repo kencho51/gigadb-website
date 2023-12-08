@@ -4,18 +4,8 @@ image:
 init:
   stage: staging terraform
   script:
-    - pwd
-    - ls -al
-    - cd ops/infrastructure/envs/
-    - ls -al
     - cd ops/infrastructure/envs/staging
-    - pwd
-    - ls -al
-
-validate:
-  stage: staging terraform
-  script:
-    - cd ops/infrastructure/envs/staging
+    - gitlab-terraform --version
 
 plan:
   stage: staging terraform
