@@ -108,6 +108,8 @@ cache:
       - gigadb/app/worker/file-worker/vendor
       - gigadb/app/worker/file-worker/composer.lock
       - gigadb/app/client/web/node_modules
+      - ops/infrastructure/envs/staging/.terraform
+      - ops/infrastructure/envs/staging/.terraform.lock.hcl
 
 before_script:
   - '[[ $CI_JOB_NAME != *sast* ]] && [[ $CI_JOB_NAME != container_scanning* ]] && env | grep "^CI_" > $APPLICATION/.ci_env'
@@ -116,6 +118,7 @@ before_script:
   - '[[ $CI_JOB_NAME != *sast* ]] && [[ $CI_JOB_NAME != container_scanning* ]] && time apk add --no-cache py-pip bash curl jq git'
   # Pin docker-compose version to stop installation error
   - '[[ $CI_JOB_NAME != *sast* ]] && [[ $CI_JOB_NAME != container_scanning* ]] && time pip install docker-compose~=1.23.0'
+  - 'mkdir -pv ops/infrastructure/envs/staging'
 
 #sd_gigadb:
 #  variables:

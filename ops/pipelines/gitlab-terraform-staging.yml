@@ -1,16 +1,6 @@
 image:
   name: "$CI_TEMPLATE_REGISTRY_HOST/gitlab-org/terraform-images/stable:latest"
 
-cache:
-  key: tf
-  paths:
-    - ops/infrastructure/envs/staging/.terraform
-    - ops/infrastructure/envs/staging/.terraform.lock.hcl
-
-before_script:
-  - 'mkdir -pv ops/infrastructure/envs/staging'
-
-
 init:
   stage: staging terraform
   script:
