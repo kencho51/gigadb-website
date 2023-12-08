@@ -1,0 +1,37 @@
+image:
+  name: "$CI_TEMPLATE_REGISTRY_HOST/gitlab-org/terraform-images/stable:latest"
+
+cache:
+  key: tf
+  paths:
+    - ops/infrastructure/envs/$GIGADB_ENV/.terraform
+    - ops/infrastructure/envs/$GIGADB_ENV/.terraform.lock.hcl
+
+init:
+  stage: staging terraform
+  script:
+    - pwd
+    - cd ops/infrastructure/envs/staging
+    - pwd
+
+validate:
+  stage: staging terraform
+  script:
+    - cd ops/infrastructure/envs/staging
+
+plan:
+  stage: staging terraform
+  script:
+    - cd ops/infrastructure/envs/staging
+
+apply:
+  stage: staging terraform
+  script:
+    - cd ops/infrastructure/envs/staging
+  when: manual
+
+destroy:
+  stage: staging terraform
+  script:
+    - cd ops/infrastructure/envs/staging
+  when: manual
