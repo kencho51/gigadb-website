@@ -7,12 +7,18 @@ cache:
     - ops/infrastructure/envs/staging/.terraform
     - ops/infrastructure/envs/staging/.terraform.lock.hcl
 
+before_script:
+  - mkdir -pv ops/infrastructure/envs/staging
+
+
 init:
   stage: staging terraform
   script:
     - pwd
+    - ls -al
     - cd ops/infrastructure/envs/staging
     - pwd
+    - ls -al
 
 validate:
   stage: staging terraform
