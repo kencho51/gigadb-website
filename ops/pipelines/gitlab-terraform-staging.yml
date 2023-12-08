@@ -16,6 +16,8 @@ init:
   script:
     - pwd
     - ls -al
+    - cd ops/infrastructure/envs/
+    - ls -al
     - cd ops/infrastructure/envs/staging
     - pwd
     - ls -al
