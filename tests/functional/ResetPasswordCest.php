@@ -61,7 +61,7 @@ class ResetPasswordCest
         $I->click('Reset');
         // Pressing Reset button takes user to /site/thanks page
         $I->seeInCurrentUrl("/site/thanks");
-        $I->see('Reset Password Request Submitted', 'h4');
+        $I->see('Reset Password Request Submitted');
         $I->see('For security reasons, we cannot tell you if the email you entered is valid or not.');
         // The selector below will be deleted because its token has
         // expired and will be replaced with a new selector token
@@ -107,7 +107,7 @@ class ResetPasswordCest
         $I->click('Reset');
         // Reset button now goes to /site/forgot page with flash message
         $I->seeInCurrentUrl("/site/forgot");
-        $I->see('Forgotten password', 'h4');
+        $I->see('Forgotten password');
         $I->see('Too many password requests - please wait till current request expires');
     }
 
