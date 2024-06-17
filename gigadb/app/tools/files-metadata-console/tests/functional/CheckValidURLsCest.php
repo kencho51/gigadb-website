@@ -16,6 +16,9 @@ class CheckValidURLsCest
         "https://ftp.cngb.org/pub/gigadb/pub/10.5524/100001_101000/100006/phylogeny_study_update/",
     ];
 
+    /**
+     * @skip Skip test due to CNGB FTP server not in use anymore
+     */
     public function tryReportIssues(\FunctionalTester $I): void {
         $expectedIssues = [
             "URL appears to be a directory listing",
@@ -45,6 +48,9 @@ class CheckValidURLsCest
         }
     }
 
+    /**
+     * @skip Skip test due to CNGB FTP server not in use anymore
+     */
     public function tryNoIssueToReport(\FunctionalTester $I): void {
         $testWebClient = new Client([ 'allow_redirects' => false ]);
         $component = new FilesURLsFetcher(["doi" => "100142", "webClient" => $testWebClient]);
