@@ -52,7 +52,7 @@ data "aws_ami" "centos" {
     values = ["hvm"]
   }
 
-  owners = ["125523088429"]
+  owners = ["049839813732"]
 }
 
 resource "aws_instance" "bastion" {
