@@ -83,6 +83,28 @@ docker-compose build application
 docker-compose up -d
 ```
 
+Then verify that Xdebug is installed by running:
+
+```bash
+% docker-compose exec application php -m | grep xdebug
+PHP:  syntax error, unexpected '(' in /usr/local/etc/php/conf.d/xdebug.ini on line 14
+Cannot load Xdebug - it was already loaded
+xdebug
+
+% docker-compose run --rm application bash
+WARN[0000] /Users/kencho/gigascience/gigadb-website/ops/deployment/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion 
+root@3117bd4f6a72:/var/www# php -v
+PHP:  syntax error, unexpected '(' in /usr/local/etc/php/conf.d/xdebug.ini on line 14
+Cannot load Xdebug - it was already loaded
+PHP 7.4.33 (cli) (built: Nov 15 2022 03:43:02) ( NTS )
+Copyright (c) The PHP Group
+Zend Engine v3.4.0, Copyright (c) Zend Technologies
+    with Zend OPcache v7.4.33, Copyright (c), by Zend Technologies
+    with Xdebug v2.9.8, Copyright (c) 2002-2020, by Derick Rethans
+root@3117bd4f6a72:/var/www# 
+
+```
+
 ## 3. Configure PHPStorm
 
 ### 3.1 Enable the debugger
